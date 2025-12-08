@@ -32,7 +32,7 @@
             cursor: crosshair;
         }
 
-        /* Navigation Bar - Updated Design */
+        /* Navigation Bar - Updated Design with Signature */
         .navbar {
             background: rgba(30, 30, 40, 0.85);
             backdrop-filter: blur(10px);
@@ -49,7 +49,28 @@
             transform: translateX(-50%);
             z-index: 1000;
             width: auto;
-            max-width: 600px;
+            max-width: 700px; /* Increased max-width to accommodate signature */
+        }
+
+        /* Signature Style */
+        .nav-signature {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            height: 30px;
+        }
+
+        .nav-signature img {
+            height: 100%;
+            width: auto;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+
+        .nav-signature:hover img {
+            opacity: 1;
+            transform: scale(1.05);
         }
 
         .nav-item {
@@ -922,6 +943,10 @@
                 max-width: 90%;
             }
 
+            .nav-signature {
+                display: none; /* Hide signature on smaller screens */
+            }
+
             .nav-item {
                 padding: 8px 14px;
                 font-size: 13px;
@@ -974,6 +999,10 @@
             .navbar {
                 padding: 8px 12px;
                 gap: 2px;
+            }
+
+            .nav-signature {
+                display: none;
             }
 
             .nav-item {
@@ -1039,8 +1068,13 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar - Updated Design -->
+    <!-- Navigation Bar - Updated Design with Signature -->
     <nav class="navbar">
+        <!-- Signature added here -->
+        <div class="nav-signature">
+            <img src="sign.jpg" alt="Signature" />
+        </div>
+        
         <a href="#home" class="nav-item active" data-section="home">Home</a>
         <a href="#about" class="nav-item" data-section="about">About</a>
         <a href="#skills" class="nav-item" data-section="skills">Skills</a>
@@ -1071,8 +1105,8 @@
             </div>
             <div class="about-text">
                 <h3>Security-Driven Developer</h3>
-                <p>I’m a developer who loves blending security, design, and functionality to build digital experiences that feel smooth, smart, and dependable. Whether it’s crafting clean interfaces or strengthening the backbone of an application, I focus on creating solutions that work beautifully and withstand real-world challenges.</p>
-                <p>When I’m away from the screen, you’ll find me experimenting with new ideas, exploring emerging technologies, and shaping concepts that inspire my next project.</p>
+                <p>I'm a developer who sees security not as an afterthought, but as a foundation. I build digital experiences where elegant design meets robust protection—where every interface element is intuitive and every line of code is defensible. From frontend polish to backend resilience, I create solutions that users trust and systems that last.</p>
+                <p>Beyond the keyboard, I'm drawn to the intersection of creativity and logic. I explore new frameworks, dissect security patterns, and find inspiration in unexpected places—whether that's a clever API design or a perfectly structured argument. Every curiosity feeds into building something better.</p>
             </div>
         </div>
     </section>
@@ -1338,7 +1372,7 @@
                             <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                         </svg>
                     </a>
-                    <a href="https://x.com/yourusername" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="X (Twitter)">
+                    <a href="https://x.com/Shreyan05549644" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="X (Twitter)">
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                         </svg>
@@ -1802,47 +1836,47 @@
         // Work section functionality
         const projects = [
             {
-                title: "— Project 1",
-                description: "A platform designed for early-stage entrepreneurs to pitch, browse, and engage with startup ideas. It's built to impress both users and investors with blazing speed, compelling visuals, and a modern tech stack.",
+                title: "MedManage - Pharmacy Management System",
+                description: "MedManage is a comprehensive pharmacy management platform designed to modernize medical retail operations. It features secure inventory control, real-time sales tracking, automated invoice generation, and business analytics—all within an intuitive interface.",
                 features: [
-                    "Leveraged Partial Prerendering and After for faster loading.",
-                    "Simplified idea submission with a clean, intuitive design.",
-                    "Enhanced browsing with seamless performance optimization."
+                    "Secure Authentication Role-based access control with persistent session management for authorized personnel only.",
+                    "📦 Smart Inventory Tracking Real-time stock monitoring. ",
+                    "📄 Automated PDF Invoicing One-click professional bill generation with instant download and save options."
                 ],
-                tech: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Sanity CMS"],
+                tech: ["Node.js","Express", "HTML", "CSS", "JavaScript", "Tailwind CSS", "MongoDB"],
                 link: "https://med-manage-online.vercel.app/login.html"
             },
             {
-                title: "— Project 2",
-                description: "Your second project description goes here.",
+                title: "SecureVault- Password Manager",
+                description: "A client-side password manager with AES encryption that runs entirely in your browser. Store, organize, and generate strong passwords with category-based filtering and auto-logout protection. All data stays local in localStorage—no servers, no tracking.",
                 features: [
-                    "Feature 1 of project 2.",
-                    "Feature 2 of project 2.",
-                    "Feature 3 of project 2."
+                    "🔐 AES Encryption Secure local storage with master key authentication and SHA256 hashing.",
+                    "🏷️ Smart Filtering Organize passwords by categories and tags for instant access.",
+                    "🔑 Strong Generation  Create 8-32 character passwords with real-time strength analysis."
                 ],
-                tech: ["React", "Node.js", "MongoDB", "Express"],
+                tech: ["HTML5", "JavaScript (ES6+)", "Tailwind CSS", "CryptoJS", "MongoDB"],
                 link: "https://secure-vault-eta-flame.vercel.app"
             },
             {
-                title: "— Project 3",
-                description: "Your third project description goes here.",
+                title: "FileCraft - Universal File Converter",
+                description: "A browser-based file conversion tool that handles document, image, and media transformations entirely client-side. Convert between formats, adjust resolutions, and process media files without uploading to external servers. Built with FFmpeg.wasm for video processing and PDF-lib for document manipulation, ensuring privacy and speed.",
                 features: [
-                    "Feature 1 of project 3.",
-                    "Feature 2 of project 3.",
-                    "Feature 3 of project 3."
+                    "🖼️ Image Processing",
+                    "🎬 Media Conversion ",
+                    "📄 PDF Tools (In Progress) "
                 ],
-                tech: ["Vue.js", "Python", "Django", "PostgreSQL"],
+                tech: ["HTML5", "CSS3", "JavaScript", "PDF-lib", "CloudConvert API", "FFmpeg.wasm"],
                 link: "https://filecraft-mu.vercel.app"
             },
             {
-                title: "— Project 4",
-                description: "Your fourth project description goes here.",
+                title: "Sampoorna - Complete Care, Connected Giving",
+                description: "A next-generation humanitarian platform connecting donors, NGOs, and communities through intelligent resource matching and real-time impact tracking. Sampoorna transforms charitable giving with QR-based verification, blockchain-inspired transparency, and AI-powered allocation—ensuring every donation reaches those who need it most while eliminating food waste and inefficiency.",
                 features: [
-                    "Feature 1 of project 4.",
-                    "Feature 2 of project 4.",
-                    "Feature 3 of project 4."
+                    "🔐 Verified Donation System ",
+                    "📊 Real-Time Impact Analytics",
+                    "🚨 Emergency Response Network"
                 ],
-                tech: ["Angular", "Firebase", "Material UI", "RxJS"],
+                tech: ["HTML5", "CSS3", "JavaScript", "Node.js ", "Express.js", "MongoDB", "JWT"],
                 link: "https://global-aid-network-frontend.vercel.app"
             }
         ];
