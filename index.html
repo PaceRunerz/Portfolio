@@ -13,12 +13,26 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
+        /* --- THEME VARIABLES --- */
         :root {
+            /* Light Mode (Default) */
             --primary-color: #2563eb;
             --secondary-color: #1e40af;
+            --bg-color: #f8fafc;
             --text-color: #1f2937;
-            --light-color: #f8fafc;
+            --card-bg: #ffffff;
             --gray-color: #6b7280;
+            --nav-bg: rgba(30, 30, 40, 0.85);
+            --transition-speed: 0.5s;
+        }
+
+        /* Dark Mode Overrides */
+        body.dark-mode {
+            --bg-color: #0f0f13;
+            --text-color: #f4f4f4;
+            --card-bg: #1a1a1a;
+            --gray-color: #a0a0a0;
+            --nav-bg: rgba(0, 0, 0, 0.85);
         }
 
         html {
@@ -26,15 +40,17 @@
         }
 
         body {
-            background-color: var(--light-color);
+            background-color: var(--bg-color);
             color: var(--text-color);
             overflow-x: hidden;
-            cursor: crosshair;
+            /* CURSOR CHANGED TO DEFAULT HERE */
+            cursor: default; 
+            transition: background-color var(--transition-speed), color var(--transition-speed);
         }
 
-        /* Navigation Bar - Updated Design with Signature */
+        /* Navigation Bar */
         .navbar {
-            background: rgba(30, 30, 40, 0.85);
+            background: var(--nav-bg);
             backdrop-filter: blur(10px);
             border-radius: 50px;
             padding: 12px 24px;
@@ -49,7 +65,7 @@
             transform: translateX(-50%);
             z-index: 1000;
             width: auto;
-            max-width: 700px; /* Increased max-width to accommodate signature */
+            max-width: 700px;
         }
 
         /* Signature Style */
@@ -110,14 +126,7 @@
             border-radius: 2px;
         }
 
-        /* Hero Section - Updated with Full Screen Background */
-        
-
-
-
-
-
-        /* Hero Section - Updated */
+        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
@@ -127,7 +136,11 @@
             position: relative;
             overflow: hidden;
             text-align: center;
-            cursor: crosshair;
+            /* CURSOR CHANGED TO DEFAULT HERE AS WELL */
+            cursor: default;
+            background-image: url('hero-image.png'); /* Fallback */
+            background-size: cover;
+            background-position: center;
         }
 
         .hero::before {
@@ -161,28 +174,27 @@
             color: white;
         }
 
-        /* Updated Hero Text Styles */
         .hero h1 {
-            font-size: 4rem; /* Smaller size */
+            font-size: 4rem;
             margin-bottom: 1rem;
-            line-height: 1.1; /* Tighter line height */
+            line-height: 1.1;
             font-weight: 700;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-            color: #ffffff; /* Force white color */
-            white-space: nowrap; /* Keep in one line */
+            color: #ffffff;
+            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
         .hero h1 span {
-            color: #ffffff !important; /* Force white color */
+            color: #ffffff !important;
         }
 
         .hero p {
-            font-size: 1.6rem; /* Smaller size */
+            font-size: 1.6rem;
             margin-bottom: 2rem;
             text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
-            color: #ffffff; /* Force white color */
+            color: #ffffff;
         }
 
         .hero-buttons {
@@ -192,11 +204,11 @@
         }
 
         .btn {
-            padding: 0.8rem 2rem; /* Smaller button */
+            padding: 0.8rem 2rem;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem; /* Smaller font */
+            font-size: 1rem;
             transition: all 0.3s ease;
             display: inline-block;
         }
@@ -212,17 +224,7 @@
             box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
         }
 
-
-
-
-
-
-
-
-
-
-
-        /* Bubble Animation Styles - From Your Working Code */
+        /* Bubble Animation Styles */
         .bubble {
             position: fixed;
             border-radius: 50%;
@@ -243,834 +245,284 @@
             isolation: isolate;
         }
 
-        /* Droplet-like small bubbles */
         .bubble.droplet {
             border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
             transform: rotate(-45deg);
         }
 
         @keyframes float-away {
-            0% {
-                opacity: 1;
-                transform: translate(0, 0) scale(1);
-            }
-            100% {
-                opacity: 0;
-                transform: translate(var(--tx), var(--ty)) scale(0.3);
-            }
+            0% { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+            100% { opacity: 0; transform: translate3d(var(--tx), var(--ty), 0) scale(0.3); }
         }
 
-        /* Different size classes */
-        .bubble.size-small {
-            width: 10px;
-            height: 10px;
-        }
-
-        .bubble.size-medium {
-            width: 16px;
-            height: 16px;
-        }
-
-        .bubble.size-large {
-            width: 24px;
-            height: 24px;
-        }
-
-        .bubble.size-tiny {
-            width: 5px;
-            height: 7px;
-        }
+        .bubble.size-small { width: 10px; height: 10px; }
+        .bubble.size-medium { width: 16px; height: 16px; }
+        .bubble.size-tiny { width: 5px; height: 7px; }
 
         /* Section Styles */
-        section {
-            padding: 6rem 5%;
-        }
+        section { padding: 6rem 5%; }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--primary-color);
-            border-radius: 2px;
-        }
+        .section-title { text-align: center; margin-bottom: 4rem; }
+        .section-title h2 { font-size: 2.5rem; margin-bottom: 1rem; position: relative; display: inline-block; color: var(--text-color); }
+        .section-title h2::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 4px; background-color: var(--primary-color); border-radius: 2px; }
 
         /* About Section */
         .about {
-            background-color: white;
+            background-color: var(--card-bg);
+            transition: background-color var(--transition-speed);
         }
 
-        .about-content {
-            display: flex;
-            align-items: center;
-            gap: 4rem;
-        }
+        .about-content { display: flex; align-items: center; gap: 4rem; }
+        .about-image { flex: 1; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
+        .about-image img { width: 60%; height: auto; display: block; transition: transform 0.5s ease; }
+        .about-image:hover img { transform: scale(1.05); }
 
-        .about-image {
-            flex: 1;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
+        .about-text { flex: 1; }
+        .about-text h3 { font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--text-color); }
+        .about-text p { margin-bottom: 1.5rem; line-height: 1.6; color: var(--gray-color); }
 
-        .about-image img {
-            width: 60%;
-            height: auto;
-            display: block;
-            transition: transform 0.5s ease;
-        }
+        /* Skills Section */
+        .skills { background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); color: #ffffff; }
+        .skills .section-title h2 { color: #ffffff; }
+        .skills .section-title h2::after { background-color: #ffffff; }
 
-        .about-image:hover img {
-            transform: scale(1.05);
-        }
+        .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 40px; }
+        .skill-category { background: rgba(255, 255, 255, 0.03); border-radius: 16px; padding: 30px; border: 1px solid rgba(255, 255, 255, 0.1); transition: all 0.3s ease; }
+        .skill-category:hover { background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.2); transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
 
-        .about-text {
-            flex: 1;
-        }
+        .category-title { font-size: 1.8rem; font-weight: 600; margin-bottom: 12px; color: #ffffff; }
+        .category-subtitle { font-size: 0.95rem; color: #a0a0a0; margin-bottom: 25px; }
 
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
+        .items-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .skill-item { background: rgba(30, 30, 30, 0.8); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 15px; transition: all 0.3s ease; cursor: pointer; position: relative; overflow: hidden; }
+        .skill-item:hover { background: rgba(40, 40, 40, 0.9); border-color: rgba(255, 255, 255, 0.3); transform: translateY(-3px) scale(1.02); box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4); }
 
-        .about-text p {
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-            color: var(--gray-color);
-        }
-
-        /* Skills Section - Updated with Dark Theme */
-        .skills {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            color: #ffffff;
-        }
-
-        .skills .section-title h2 {
-            color: #ffffff;
-        }
-
-        .skills .section-title h2::after {
-            background-color: #ffffff;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            margin-top: 40px;
-        }
-
-        .skill-category {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .skill-category:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: rgba(255, 255, 255, 0.2);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .category-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #ffffff;
-        }
-
-        .category-subtitle {
-            font-size: 0.95rem;
-            color: #a0a0a0;
-            margin-bottom: 25px;
-        }
-
-        .items-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-
-        .skill-item {
-            background: rgba(30, 30, 30, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .skill-item:hover::before {
-            left: 100%;
-        }
-
-        .skill-item:hover {
-            background: rgba(40, 40, 40, 0.9);
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .skill-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-            transition: transform 0.3s ease;
-        }
-
-        .skill-item:hover .skill-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .skill-content {
-            flex: 1;
-        }
-
-        .skill-name {
-            font-size: 1rem;
-            font-weight: 500;
-            margin-bottom: 4px;
-            color: #ffffff;
-        }
-
-        .skill-description {
-            font-size: 0.85rem;
-            color: #b0b0b0;
-            line-height: 1.4;
-        }
+        .skill-icon { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem; flex-shrink: 0; transition: transform 0.3s ease; }
+        .skill-content { flex: 1; }
+        .skill-name { font-size: 1rem; font-weight: 500; margin-bottom: 4px; color: #ffffff; }
+        .skill-description { font-size: 0.85rem; color: #b0b0b0; line-height: 1.4; }
 
         /* Icon Colors */
-        .icon-nextjs {
-            background: #000000;
-            color: #ffffff;
-        }
+        .icon-nextjs { background: #000000; color: #ffffff; }
+        .icon-typescript { background: #3178c6; color: #ffffff; }
+        .icon-react { background: #61dafb; color: #000000; }
+        .icon-tailwind { background: #06b6d4; color: #ffffff; }
+        .icon-docker { background: #2496ed; color: #ffffff; }
+        .icon-rest { background: #4a5568; color: #ffffff; }
+        .icon-github { background: #24292e; color: #ffffff; }
+        .icon-figma { background: #f24e1e; color: #ffffff; }
+        .icon-convex { background: linear-gradient(135deg, #ff6b35 0%, #8b5cf6 100%); color: #ffffff; }
+        .icon-mongodb { background: #47a248; color: #ffffff; }
+        .icon-firebase { background: #ffa000; color: #ffffff; }
+        .icon-supabase { background: #3ecf8e; color: #000000; }
+        .icon-problem { background: #8b5cf6; color: #ffffff; }
+        .icon-time { background: #10b981; color: #ffffff; }
+        .icon-team { background: #3b82f6; color: #ffffff; }
+        .icon-design { background: #fbbf24; color: #000000; }
 
-        .icon-typescript {
-            background: #3178c6;
-            color: #ffffff;
-        }
+        /* Work Section */
+        .work { background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 100%); color: #fff; padding: 100px 50px 50px; }
+        .work-container { display: flex; min-height: 100vh; gap: 60px; max-width: 1600px; margin: 0 auto; }
+        .projects-scroll { flex: 1; display: flex; flex-direction: column; gap: 40px; }
+        .project-item { width: 100%; cursor: pointer; transition: transform 0.3s ease, opacity 0.3s ease; opacity: 0.6; transform: scale(0.95); }
+        .project-item.active { opacity: 1; transform: scale(1); }
+        .project-item:hover { transform: scale(1.02); }
 
-        .icon-react {
-            background: #61dafb;
-            color: #000000;
-        }
+        .project-image { width: 100%; height: auto; border-radius: 20px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); transition: box-shadow 0.3s ease; object-fit: cover; }
+        .project-item:hover .project-image { box-shadow: 0 15px 50px rgba(68, 136, 255, 0.4); }
 
-        .icon-tailwind {
-            background: #06b6d4;
-            color: #ffffff;
-        }
+        .project-details { flex: 0 0 500px; position: sticky; top: 120px; height: fit-content; padding: 40px; background: rgba(30, 30, 40, 0.6); backdrop-filter: blur(10px); border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.1); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .project-details.fade-in { opacity: 1; transform: translateY(0); }
+        .project-details.fade-out { opacity: 0; transform: translateY(20px); }
 
-        .icon-docker {
-            background: #2496ed;
-            color: #ffffff;
-        }
+        .project-title { font-size: 36px; font-weight: 700; margin-bottom: 20px; background: linear-gradient(135deg, #4488ff 0%, #ff88aa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .project-description { font-size: 16px; line-height: 1.8; color: rgba(255, 255, 255, 0.8); margin-bottom: 30px; }
+        .project-features { list-style: none; margin-bottom: 30px; }
+        .project-features li { padding: 12px 0; font-size: 15px; color: rgba(255, 255, 255, 0.9); display: flex; align-items: center; gap: 12px; }
+        .project-features li::before { content: '✨'; font-size: 18px; }
 
-        .icon-rest {
-            background: #4a5568;
-            color: #ffffff;
-        }
+        .tech-stack { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 30px; }
+        .tech-tag { padding: 8px 16px; background: rgba(68, 136, 255, 0.2); border: 1px solid rgba(68, 136, 255, 0.3); border-radius: 20px; font-size: 13px; color: #fff; transition: all 0.3s ease; }
+        .tech-tag:hover { background: rgba(68, 136, 255, 0.3); transform: translateY(-2px); }
 
-        .icon-github {
-            background: #24292e;
-            color: #ffffff;
-        }
-
-        .icon-figma {
-            background: #f24e1e;
-            color: #ffffff;
-        }
-
-        .icon-convex {
-            background: linear-gradient(135deg, #ff6b35 0%, #8b5cf6 100%);
-            color: #ffffff;
-        }
-
-        .icon-mongodb {
-            background: #47a248;
-            color: #ffffff;
-        }
-
-        .icon-firebase {
-            background: #ffa000;
-            color: #ffffff;
-        }
-
-        .icon-supabase {
-            background: #3ecf8e;
-            color: #000000;
-        }
-
-        .icon-problem {
-            background: #8b5cf6;
-            color: #ffffff;
-        }
-
-        .icon-time {
-            background: #10b981;
-            color: #ffffff;
-        }
-
-        .icon-team {
-            background: #3b82f6;
-            color: #ffffff;
-        }
-
-        .icon-design {
-            background: #fbbf24;
-            color: #000000;
-        }
-
-        /* Work Section - Updated Design */
-        .work {
-            background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 100%);
-            color: #fff;
-            padding: 100px 50px 50px;
-        }
-
-        .work-container {
-            display: flex;
-            min-height: 100vh;
-            gap: 60px;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-
-        /* Left Side - Scrollable Images */
-        .projects-scroll {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 40px;
-        }
-
-        .project-item {
-            width: 100%;
-            cursor: pointer;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            opacity: 0.6;
-            transform: scale(0.95);
-        }
-
-        .project-item.active {
-            opacity: 1;
-            transform: scale(1);
-        }
-
-        .project-item:hover {
-            transform: scale(1.02);
-        }
-
-        .project-image {
-            width: 100%;
-            height: auto;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            transition: box-shadow 0.3s ease;
-            object-fit: cover;
-        }
-
-        .project-item:hover .project-image {
-            box-shadow: 0 15px 50px rgba(68, 136, 255, 0.4);
-        }
-
-        /* Right Side - Fixed Content */
-        .project-details {
-            flex: 0 0 500px;
-            position: sticky;
-            top: 120px;
-            height: fit-content;
-            padding: 40px;
-            background: rgba(30, 30, 40, 0.6);
-            backdrop-filter: blur(10px);
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .project-details.fade-in {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .project-details.fade-out {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .project-title {
-            font-size: 36px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #4488ff 0%, #ff88aa 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .project-description {
-            font-size: 16px;
-            line-height: 1.8;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 30px;
-        }
-
-        .project-features {
-            list-style: none;
-            margin-bottom: 30px;
-        }
-
-        .project-features li {
-            padding: 12px 0;
-            font-size: 15px;
-            color: rgba(255, 255, 255, 0.9);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .project-features li::before {
-            content: '✨';
-            font-size: 18px;
-        }
-
-        .tech-stack {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-
-        .tech-tag {
-            padding: 8px 16px;
-            background: rgba(68, 136, 255, 0.2);
-            border: 1px solid rgba(68, 136, 255, 0.3);
-            border-radius: 20px;
-            font-size: 13px;
-            color: #fff;
-            transition: all 0.3s ease;
-        }
-
-        .tech-tag:hover {
-            background: rgba(68, 136, 255, 0.3);
-            transform: translateY(-2px);
-        }
-
-        .project-link {
-            display: inline-block;
-            padding: 14px 32px;
-            background: linear-gradient(135deg, #4488ff 0%, #ff88aa 100%);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(68, 136, 255, 0.3);
-        }
-
-        .project-link:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(68, 136, 255, 0.5);
-        }
+        .project-link { display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #4488ff 0%, #ff88aa 100%); color: #fff; text-decoration: none; border-radius: 25px; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(68, 136, 255, 0.3); }
+        .project-link:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(68, 136, 255, 0.5); }
 
         /* Contact Section */
-        .contact {
-            background-color: #f8fafc;
-        }
+        .contact { background-color: var(--bg-color); transition: background-color var(--transition-speed); }
+        .contact-container { display: flex; gap: 4rem; align-items: center; }
 
-        .contact-container {
-            display: flex;
-            gap: 4rem;
-            align-items: center;
-        }
+        .contact-form { flex: 1; background-color: var(--card-bg); padding: 2.5rem; border-radius: 10px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); transition: background-color var(--transition-speed); }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--text-color); }
+        .form-group input, .form-group textarea { width: 100%; padding: 0.8rem 1rem; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem; transition: all 0.3s ease; background: var(--bg-color); color: var(--text-color); }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
+        .form-group textarea { height: 150px; resize: vertical; }
 
-        .contact-form {
-            flex: 1;
-            background-color: white;
-            padding: 2.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
+        .submit-btn { width: 100%; padding: 0.8rem 1.8rem; background-color: var(--primary-color); color: white; border: none; border-radius: 5px; font-size: 1rem; font-weight: 500; cursor: pointer; transition: all 0.3s ease; }
+        .submit-btn:hover { background-color: var(--secondary-color); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2); }
 
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
+        .earth-container { flex: 1; height: 500px; position: relative; border-radius: 10px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: var(--text-color);
-        }
+        /* Footer */
+        .footer { background-color: #000; color: #fff; padding: 60px 40px 30px; width: 100%; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-bottom: 40px; }
+        .footer-column h3 { font-size: 18px; font-weight: bold; margin-bottom: 20px; color: #fff; }
+        .footer-column p { font-size: 14px; line-height: 1.6; color: #fff; opacity: 0.9; }
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: 12px; }
+        .footer-column ul li a { color: #fff; text-decoration: none; font-size: 14px; transition: all 0.3s ease; display: inline-block; }
+        .footer-column ul li a:hover { color: #4488ff; transform: translateX(5px); }
+        .social-icons { display: flex; gap: 15px; align-items: center; }
+        .social-icon { width: 40px; height: 40px; border-radius: 50%; background-color: #1a1a2e; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; cursor: pointer; text-decoration: none; }
+        .social-icon:hover { background-color: #4488ff; transform: translateY(-3px); }
+        .social-icon svg { width: 20px; height: 20px; fill: #fff; }
+        .social-icon.linkedin { border-radius: 8px; }
+        .footer-bottom { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: #fff; font-size: 14px; }
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 0.8rem 1.8rem;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            font-weight: 500;
+        /* --- TOGGLE COMPONENT CSS (RESIZED & SMALLER) --- */
+        .toggle-container {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            z-index: 1001;
             cursor: pointer;
-            transition: all 0.3s ease;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .submit-btn:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
-        }
-
-        .earth-container {
-            flex: 1;
-            height: 500px;
+        .toggle-switch {
             position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Footer - Updated with New Design */
-        .footer {
-            background-color: #000;
-            color: #fff;
-            padding: 60px 40px 30px;
-            width: 100%;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-column h3 {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-
-        .footer-column p {
-            font-size: 14px;
-            line-height: 1.6;
-            color: #fff;
-            opacity: 0.9;
-        }
-
-        .footer-column ul {
-            list-style: none;
-        }
-
-        .footer-column ul li {
-            margin-bottom: 12px;
-        }
-
-        .footer-column ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .footer-column ul li a:hover {
-            color: #4488ff;
-            transform: translateX(5px);
-        }
-
-        .social-icons {
+            /* RESIZED: Smaller Dimensions */
+            width: 120px; 
+            height: 44px;
+            border-radius: 50px;
+            /* Default: Work Mode */
+            background: linear-gradient(135deg, #FFC371 0%, #FF5F6D 100%);
+            box-shadow: 0 6px 15px rgba(255, 95, 109, 0.3);
+            transition: all var(--transition-speed) ease;
             display: flex;
-            gap: 15px;
             align-items: center;
+            justify-content: space-between;
+            padding: 0 4px;
+            overflow: hidden;
         }
 
-        .social-icon {
-            width: 40px;
-            height: 40px;
+        .toggle-text {
+            /* RESIZED: Smaller Font */
+            font-size: 13px;
+            font-weight: 600;
+            color: white;
+            position: absolute;
+            transition: opacity var(--transition-speed), transform var(--transition-speed);
+            pointer-events: none;
+            letter-spacing: 0.5px;
+        }
+
+        /* Adjusted positions for smaller size */
+        .text-work { right: 18px; opacity: 1; transform: translateX(0); }
+        .text-sleep { left: 18px; opacity: 0; transform: translateX(-15px); }
+
+        .toggle-knob {
+            position: absolute;
+            left: 4px;
+            /* RESIZED: Smaller Knob */
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border-radius: 50%;
-            background-color: #1a1a2e;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: inset 0 2px 4px rgba(255, 255, 255, 0.4), 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: all var(--transition-speed) cubic-bezier(0.68, -0.55, 0.27, 1.55);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
         }
 
-        .social-icon:hover {
-            background-color: #4488ff;
-            transform: translateY(-3px);
-        }
+        .toggle-icon { width: 18px; height: 18px; fill: white; position: absolute; transition: all var(--transition-speed); }
+        .icon-moon { opacity: 0; transform: rotate(-90deg) scale(0.5); }
+        .icon-user { opacity: 1; transform: rotate(0) scale(1); }
 
-        .social-icon svg {
-            width: 20px;
-            height: 20px;
-            fill: #fff;
+        /* Active State (Dark/Sleep Mode) */
+        .toggle-container.active .toggle-switch {
+            background: linear-gradient(135deg, #2b0c52 0%, #5b15a1 100%);
+            box-shadow: 0 6px 15px rgba(43, 12, 82, 0.4);
         }
-
-        .social-icon.linkedin {
-            border-radius: 8px;
+        .toggle-container.active .toggle-knob {
+            /* Adjusted calculation for smaller width */
+            left: calc(100% - 40px);
+            background: rgba(255, 255, 255, 0.15);
         }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #fff;
-            font-size: 14px;
-        }
+        .toggle-container.active .text-work { opacity: 0; transform: translateX(15px); }
+        .toggle-container.active .text-sleep { opacity: 1; transform: translateX(0); }
+        .toggle-container.active .icon-user { opacity: 0; transform: rotate(90deg) scale(0.5); }
+        .toggle-container.active .icon-moon { opacity: 1; transform: rotate(0) scale(1); }
 
         /* Responsive Styles */
         @media (max-width: 1200px) {
-            .work-container {
-                flex-direction: column;
-                padding: 100px 30px 50px;
-            }
-
-            .project-details {
-                position: relative;
-                top: 0;
-                flex: 1;
-            }
-
-            .projects-scroll {
-                order: 2;
-            }
-
-            .project-details {
-                order: 1;
-            }
+            .work-container { flex-direction: column; padding: 100px 30px 50px; }
+            .project-details { position: relative; top: 0; flex: 1; order: 1; }
+            .projects-scroll { order: 2; }
         }
 
         @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            
-            .about-content {
-                flex-direction: column;
-            }
-            
-            .contact-container {
-                flex-direction: column;
-            }
-            
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .earth-container {
-                height: 400px;
-                width: 100%;
-            }
-            
-            .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
-            }
+            .hero h1 { font-size: 3rem; }
+            .about-content { flex-direction: column; }
+            .contact-container { flex-direction: column; }
+            .skills-grid { grid-template-columns: 1fr; }
+            .earth-container { height: 400px; width: 100%; }
+            .footer-content { grid-template-columns: repeat(2, 1fr); gap: 30px; }
         }
 
         @media (max-width: 768px) {
-            .navbar {
-                padding: 10px 16px;
-                gap: 4px;
-                max-width: 90%;
-            }
-
-            .nav-signature {
-                display: none; /* Hide signature on smaller screens */
-            }
-
-            .nav-item {
-                padding: 8px 14px;
-                font-size: 13px;
-            }
+            .navbar { padding: 10px 16px; gap: 4px; max-width: 90%; }
+            .nav-signature { display: none; }
+            .nav-item { padding: 8px 14px; font-size: 13px; }
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.2rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .items-grid { grid-template-columns: 1fr; }
+            .footer { padding: 40px 20px 20px; }
+            .work { padding: 80px 20px 30px; }
+            .work-container { padding: 80px 20px 30px; gap: 30px; }
+            .project-details { padding: 30px 20px; }
+            .project-title { font-size: 28px; }
+            .project-description { font-size: 14px; }
             
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1.2rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .items-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer {
-                padding: 40px 20px 20px;
-            }
-            
-            .work {
-                padding: 80px 20px 30px;
-            }
-            
-            .work-container {
-                padding: 80px 20px 30px;
-                gap: 30px;
-            }
-
-            .project-details {
-                padding: 30px 20px;
-            }
-
-            .project-title {
-                font-size: 28px;
-            }
-
-            .project-description {
-                font-size: 14px;
-            }
+            /* Adjust toggle for mobile */
+            .toggle-container { bottom: 20px; right: 20px; }
+            .toggle-switch { width: 110px; height: 40px; } /* Even smaller on mobile */
+            .toggle-knob { width: 32px; height: 32px; }
+            .toggle-container.active .toggle-knob { left: calc(100% - 36px); }
         }
 
         @media (max-width: 480px) {
-            .navbar {
-                padding: 8px 12px;
-                gap: 2px;
-            }
-
-            .nav-signature {
-                display: none;
-            }
-
-            .nav-item {
-                padding: 6px 10px;
-                font-size: 12px;
-            }
-            
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 250px;
-                text-align: center;
-            }
-            
-            .contact-form {
-                padding: 1.5rem;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
+            .navbar { padding: 8px 12px; gap: 2px; }
+            .nav-signature { display: none; }
+            .nav-item { padding: 6px 10px; font-size: 12px; }
+            .hero h1 { font-size: 2rem; }
+            .section-title h2 { font-size: 2rem; }
+            .btn { width: 100%; max-width: 250px; text-align: center; }
+            .contact-form { padding: 1.5rem; }
+            .footer-content { grid-template-columns: 1fr; gap: 30px; }
         }
 
         /* Animation on load */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        .skill-category {
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        .skill-category:nth-child(1) {
-            animation-delay: 0.1s;
-        }
-
-        .skill-category:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .skill-category:nth-child(3) {
-            animation-delay: 0.3s;
-        }
-
-        .skill-category:nth-child(4) {
-            animation-delay: 0.4s;
-        }
+        .skill-category { animation: fadeInUp 0.6s ease forwards; }
+        .skill-category:nth-child(1) { animation-delay: 0.1s; }
+        .skill-category:nth-child(2) { animation-delay: 0.2s; }
+        .skill-category:nth-child(3) { animation-delay: 0.3s; }
+        .skill-category:nth-child(4) { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
-    <!-- Navigation Bar - Updated Design with Signature -->
     <nav class="navbar">
-        <!-- Signature added here -->
         <div class="nav-signature">
             <img src="sign.jpg" alt="Signature" />
         </div>
@@ -1082,7 +534,6 @@
         <a href="#contact" class="nav-item" data-section="contact">Contact</a>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>Hi, I'm <span>Shreyansh Tripathi</span></h1>
@@ -1093,15 +544,13 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="about">
         <div class="section-title">
             <h2>About Me</h2>
         </div>
         <div class="about-content">
             <div class="about-image">
-                <!-- Your profile photo -->
-                <img src="profile-image.jpg" alt="Shreyansh Tripathi">
+                <img src="profile-image.jpg" alt="Shreyansh Tripathi" loading="lazy">
             </div>
             <div class="about-text">
                 <h3>Security-Driven Developer</h3>
@@ -1111,193 +560,88 @@
         </div>
     </section>
 
-    <!-- Skills Section - Updated with Dark Theme -->
     <section id="skills" class="skills">
         <div class="section-title">
             <h2>Tools & Skills</h2>
             <p style="color: #d0d0d0; max-width: 800px; margin: 0 auto; margin-top: 20px;">My expertise combines technical proficiency with professional skills, enabling me to deliver comprehensive solutions while effectively collaborating with teams and stakeholders.</p>
         </div>
         <div class="skills-grid">
-            <!-- Core Technologies -->
             <div class="skill-category">
                 <h2 class="category-title">Core Technologies</h2>
                 <p class="category-subtitle">Primary technologies I use for building modern web applications</p>
                 <div class="items-grid">
-                    <div class="skill-item">
-                        <div class="skill-icon icon-nextjs">N</div>
-                        <div class="skill-content">
-                            <div class="skill-name">Next.js</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-icon icon-typescript">TS</div>
-                        <div class="skill-content">
-                            <div class="skill-name">TypeScript</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-icon icon-react">⚛</div>
-                        <div class="skill-content">
-                            <div class="skill-name">React.js</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-icon icon-tailwind">T</div>
-                        <div class="skill-content">
-                            <div class="skill-name">Tailwind CSS</div>
-                        </div>
-                    </div>
+                    <div class="skill-item"><div class="skill-icon icon-nextjs">N</div><div class="skill-content"><div class="skill-name">Next.js</div></div></div>
+                    <div class="skill-item"><div class="skill-icon icon-typescript">TS</div><div class="skill-content"><div class="skill-name">TypeScript</div></div></div>
+                    <div class="skill-item"><div class="skill-icon icon-react">⚛</div><div class="skill-content"><div class="skill-name">React.js</div></div></div>
+                    <div class="skill-item"><div class="skill-icon icon-tailwind">T</div><div class="skill-content"><div class="skill-name">Tailwind CSS</div></div></div>
                 </div>
             </div>
 
-            <!-- Development Tools -->
             <div class="skill-category">
                 <h2 class="category-title">Development Tools</h2>
                 <p class="category-subtitle">Essential tools for development workflow and deployment</p>
                 <div class="items-grid">
-                    <div class="skill-item">
-                        <div class="skill-icon icon-docker">🐳</div>
-                        <div class="skill-content">
-                            <div class="skill-name">Docker</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-icon icon-rest">⚡</div>
-                        <div class="skill-content">
-                            <div class="skill-name">REST APIs</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-icon icon-github">G</div>
-                        <div class="skill-content">
-                            <div class="skill-name">GitHub</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-icon icon-figma">F</div>
-                        <div class="skill-content">
-                            <div class="skill-name">Figma</div>
-                        </div>
-                    </div>
+                    <div class="skill-item"><div class="skill-icon icon-docker">🐳</div><div class="skill-content"><div class="skill-name">Docker</div></div></div>
+                    <div class="skill-item"><div class="skill-icon icon-rest">⚡</div><div class="skill-content"><div class="skill-name">REST APIs</div></div></div>
+                    <div class="skill-item"><div class="skill-icon icon-github">G</div><div class="skill-content"><div class="skill-name">GitHub</div></div></div>
+                    <div class="skill-item"><div class="skill-icon icon-figma">F</div><div class="skill-content"><div class="skill-name">Figma</div></div></div>
                 </div>
             </div>
 
-            <!-- Backend & Cloud -->
             <div class="skill-category">
                 <h2 class="category-title">Backend & Cloud</h2>
                 <p class="category-subtitle">Technologies for server-side development and cloud services</p>
                 <div class="items-grid">
-                    <div class="skill-item">
-                        <div class="skill-icon icon-convex">C</div>
-                        <div class="skill-content">
-                            <div class="skill-name">Convex</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-icon icon-mongodb">M</div>
-                        <div class="skill-content">
-                            <div class="skill-name">MongoDB</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-icon icon-firebase">🔥</div>
-                        <div class="skill-content">
-                            <div class="skill-name">Firebase</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-icon icon-supabase">S</div>
-                        <div class="skill-content">
-                            <div class="skill-name">Supabase</div>
-                        </div>
-                    </div>
+                    <div class="skill-item"><div class="skill-icon icon-convex">C</div><div class="skill-content"><div class="skill-name">Convex</div></div></div>
+                    <div class="skill-item"><div class="skill-icon icon-mongodb">M</div><div class="skill-content"><div class="skill-name">MongoDB</div></div></div>
+                    <div class="skill-item"><div class="skill-icon icon-firebase">🔥</div><div class="skill-content"><div class="skill-name">Firebase</div></div></div>
+                    <div class="skill-item"><div class="skill-icon icon-supabase">S</div><div class="skill-content"><div class="skill-name">Supabase</div></div></div>
                 </div>
             </div>
 
-            <!-- Professional Skills -->
             <div class="skill-category">
                 <h2 class="category-title">Professional Skills</h2>
                 <p class="category-subtitle">Soft skills and professional competencies that enhance technical work</p>
                 <div class="items-grid">
-                    <div class="skill-item">
-                        <div class="skill-icon icon-problem">🧠</div>
-                        <div class="skill-content">
-                            <div class="skill-name">Problem Solving</div>
-                            <div class="skill-description">Breaking down complex challenges into manageable solutions</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-icon icon-time">⏰</div>
-                        <div class="skill-content">
-                            <div class="skill-name">Time Management</div>
-                            <div class="skill-description">Efficient project planning and deadline management</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-icon icon-team">👥</div>
-                        <div class="skill-content">
-                            <div class="skill-name">Team Collaboration</div>
-                            <div class="skill-description">Effective communication and teamwork in development projects</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-icon icon-design">💡</div>
-                        <div class="skill-content">
-                            <div class="skill-name">System Design</div>
-                            <div class="skill-description">Architecting scalable and maintainable solutions</div>
-                        </div>
-                    </div>
+                    <div class="skill-item"><div class="skill-icon icon-problem">🧠</div><div class="skill-content"><div class="skill-name">Problem Solving</div><div class="skill-description">Breaking down complex challenges</div></div></div>
+                    <div class="skill-item"><div class="skill-icon icon-time">⏰</div><div class="skill-content"><div class="skill-name">Time Management</div><div class="skill-description">Efficient project planning</div></div></div>
+                    <div class="skill-item"><div class="skill-icon icon-team">👥</div><div class="skill-content"><div class="skill-name">Team Collaboration</div><div class="skill-description">Effective communication</div></div></div>
+                    <div class="skill-item"><div class="skill-icon icon-design">💡</div><div class="skill-content"><div class="skill-name">System Design</div><div class="skill-description">Architecting scalable solutions</div></div></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Work Section - Updated Design -->
     <section id="work" class="work">
         <div class="section-title">
             <h2 style="color: white;">My Work</h2>
         </div>
         <div class="work-container">
-            <!-- Left Side - Scrollable Project Images -->
             <div class="projects-scroll">
                 <div class="project-item" data-project="0">
-                    <img src="project1.jpg" alt="Project 1" class="project-image" data-link="https://your-project1-link.com">
+                    <img src="project1.jpg" alt="Project 1" class="project-image" loading="lazy">
                 </div>
                 <div class="project-item" data-project="1">
-                    <img src="project2.jpg" alt="Project 2" class="project-image" data-link="https://your-project2-link.com">
+                    <img src="project2.jpg" alt="Project 2" class="project-image" loading="lazy">
                 </div>
                 <div class="project-item" data-project="2">
-                    <img src="project3.jpg" alt="Project 3" class="project-image" data-link="https://your-project3-link.com">
+                    <img src="project3.jpg" alt="Project 3" class="project-image" loading="lazy">
                 </div>
                 <div class="project-item" data-project="3">
-                    <img src="project4.jpg" alt="Project 4" class="project-image" data-link="https://your-project4-link.com">
+                    <img src="project4.jpg" alt="Project 4" class="project-image" loading="lazy">
                 </div>
             </div>
 
-            <!-- Right Side - Fixed Project Details -->
             <div class="project-details" id="projectDetails">
                 <h2 class="project-title" id="projectTitle">— Project Name</h2>
-                <p class="project-description" id="projectDescription">
-                    A platform designed for early-stage entrepreneurs to pitch, browse, and engage with startup ideas. 
-                    It's built to impress both users and investors with blazing speed, compelling visuals, and a modern tech stack.
-                </p>
-                <ul class="project-features" id="projectFeatures">
-                    <li>Leveraged Partial Prerendering and After for faster loading.</li>
-                    <li>Simplified idea submission with a clean, intuitive design.</li>
-                    <li>Enhanced browsing with seamless performance optimization.</li>
-                </ul>
-                <div class="tech-stack" id="techStack">
-                    <span class="tech-tag">Next.js</span>
-                    <span class="tech-tag">React</span>
-                    <span class="tech-tag">TypeScript</span>
-                    <span class="tech-tag">Tailwind CSS</span>
-                </div>
+                <p class="project-description" id="projectDescription"></p>
+                <ul class="project-features" id="projectFeatures"></ul>
+                <div class="tech-stack" id="techStack"></div>
                 <a href="#" class="project-link" id="projectLink" target="_blank">View Project →</a>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="section-title">
             <h2>Contact Me</h2>
@@ -1321,21 +665,16 @@
                 </form>
             </div>
             <div class="earth-container" id="earth-container">
-                <!-- 3D Earth will be rendered here -->
-            </div>
+                </div>
         </div>
     </section>
 
-    <!-- Footer - Updated with New Design -->
     <footer class="footer">
         <div class="footer-content">
-            <!-- About Me Column -->
             <div class="footer-column">
                 <h3>About Me</h3>
                 <p>A passionate developer focused on creating innovative solutions and meaningful user experiences.</p>
             </div>
-
-            <!-- Quick Links Column -->
             <div class="footer-column">
                 <h3>Quick Links</h3>
                 <ul>
@@ -1346,8 +685,6 @@
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
-
-            <!-- Skills Column -->
             <div class="footer-column">
                 <h3>Skills</h3>
                 <ul>
@@ -1357,526 +694,267 @@
                     <li>Project Management</li>
                 </ul>
             </div>
-
-            <!-- Connect Column -->
             <div class="footer-column">
                 <h3>Connect</h3>
                 <div class="social-icons">
                     <a href="https://github.com/PaceRunerz?tab=repositories" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="GitHub">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
                     </a>
                     <a href="https://www.linkedin.com/in/st-shreyansh-tripathi" target="_blank" rel="noopener noreferrer" class="social-icon linkedin" aria-label="LinkedIn">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                     </a>
                     <a href="https://x.com/Shreyan05549644" target="_blank" rel="noopener noreferrer" class="social-icon" aria-label="X (Twitter)">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
                     </a>
                 </div>
             </div>
         </div>
-
         <div class="footer-bottom">
             <p>© 2025 Shreyansh Tripathi X PaceRunerz. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Three.js CDN -->
+    <div class="toggle-container" id="themeToggle">
+        <div class="toggle-switch">
+            <span class="toggle-text text-sleep">Sleep</span>
+            <span class="toggle-text text-work">Work</span>
+            
+            <div class="toggle-knob">
+                <svg class="toggle-icon icon-user" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+                
+                <svg class="toggle-icon icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M10 2c-1.82 0-3.53.5-5 1.35C7.99 5.08 10 8.3 10 12s-2.01 6.92-5 8.65C6.47 21.5 8.18 22 10 22c5.52 0 10-4.48 10-10S15.52 2 10 2z"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
 
     <script>
-        // BUBBLE ANIMATION - From Your Working Code
+        // --- OPTIMIZED BUBBLE ANIMATION ---
         const hero = document.querySelector('.hero');
         let throttleTimeout;
+        let heroRect = hero.getBoundingClientRect();
 
-        // Setup bubble effect when page loads
+        window.addEventListener('resize', () => {
+            heroRect = hero.getBoundingClientRect();
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
             setupBubbleEffect();
-            initEarth(); // Initialize 3D Earth
+            initEarth(); 
         });
 
         function setupBubbleEffect() {
-            // Create bubbles on mouse move over the hero section
             hero.addEventListener('mousemove', (e) => {
-                // Throttle to avoid too many bubbles
                 clearTimeout(throttleTimeout);
                 throttleTimeout = setTimeout(() => {
-                    createBubblesAcrossHero();
-                }, 100); // Create bubbles every 100ms while moving
+                    createBubblesAcrossHero(15); 
+                }, 100);
             });
         }
 
-        function createBubblesAcrossHero() {
-            const rect = hero.getBoundingClientRect();
-            
-            // Create 40 bubbles distributed across the entire hero section
-            const bubbleCount = 25;
-
-            for (let i = 0; i < bubbleCount; i++) {
+        function createBubblesAcrossHero(count) {
+            for (let i = 0; i < count; i++) {
                 setTimeout(() => {
-                    // Generate random position within the hero bounds
-                    const randomX = rect.left + Math.random() * rect.width;
-                    const randomY = rect.top + Math.random() * rect.height;
+                    const randomX = heroRect.left + Math.random() * heroRect.width;
+                    const randomY = heroRect.top + Math.random() * heroRect.height;
                     createBubble(randomX, randomY);
-                }, i * 10); // Stagger the creation slightly
+                }, i * 15);
             }
         }
 
         function createBubble(x, y) {
             const bubble = document.createElement('div');
             bubble.className = 'bubble';
-            
-            // Force white background color directly with multiple methods
-            bubble.style.backgroundColor = 'rgb(255, 255, 255)';
-            bubble.style.background = 'rgb(255, 255, 255)';
-            bubble.style.setProperty('background-color', 'rgb(255, 255, 255)', 'important');
-            bubble.style.setProperty('mix-blend-mode', 'screen', 'important');
-            bubble.style.filter = 'brightness(1.5) contrast(1.1)';
-
-            // Random size - mix of different sizes including tiny droplets
-            const sizeTypes = ['size-tiny', 'size-small', 'size-small', 'size-medium', 'size-large'];
+            bubble.style.cssText = `
+                background-color: rgb(255, 255, 255) !important;
+                left: ${x}px;
+                top: ${y}px;
+            `;
+            const sizeTypes = ['size-tiny', 'size-small', 'size-medium'];
             const randomSize = sizeTypes[Math.floor(Math.random() * sizeTypes.length)];
             bubble.classList.add(randomSize);
-
-            // Add droplet class to some small bubbles for teardrop shape
             if (randomSize === 'size-tiny' || randomSize === 'size-small') {
-                if (Math.random() > 0.5) {
-                    bubble.classList.add('droplet');
-                }
+                if (Math.random() > 0.5) bubble.classList.add('droplet');
             }
-
-            // Random direction and distance
-            const angle = Math.random() * Math.PI * 2; // Random angle in radians
-            const distance = 100 + Math.random() * 150; // Distance to travel
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 80 + Math.random() * 100;
             const tx = Math.cos(angle) * distance;
             const ty = Math.sin(angle) * distance;
-
-            // Use fixed positioning with viewport coordinates
-            bubble.style.left = x + 'px';
-            bubble.style.top = y + 'px';
-            bubble.style.setProperty('--tx', tx + 'px');
-            bubble.style.setProperty('--ty', ty + 'px');
-
-            // Random animation duration for variety
-            const duration = 0.9 + Math.random() * 1; // 1.5-2.5 seconds
+            bubble.style.setProperty('--tx', `${tx}px`);
+            bubble.style.setProperty('--ty', `${ty}px`);
+            const duration = 1 + Math.random() * 0.8;
             bubble.style.animationDuration = duration + 's';
-
             document.body.appendChild(bubble);
-
-            // Remove bubble after animation
             setTimeout(() => {
-                if (bubble.parentNode) {
-                    bubble.parentNode.removeChild(bubble);
-                }
+                if (bubble.parentNode) bubble.parentNode.removeChild(bubble);
             }, duration * 1000);
         }
 
-        // 3D EARTH ANIMATION - Your Exact Code
+        // --- OPTIMIZED 3D EARTH ANIMATION ---
         function initEarth() {
             const container = document.getElementById('earth-container');
             if (!container) return;
-            
-            // Scene setup
             const scene = new THREE.Scene();
-            const camera = new THREE.PerspectiveCamera(
-                75,
-                container.clientWidth / container.clientHeight,
-                0.1,
-                1000
-            );
+            const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
             camera.position.z = 5;
-
-            const renderer = new THREE.WebGLRenderer({ 
-                antialias: true,
-                alpha: true 
-            });
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, powerPreference: "high-performance" });
             renderer.setSize(container.clientWidth, container.clientHeight);
-            renderer.setPixelRatio(window.devicePixelRatio);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); 
             container.appendChild(renderer.domElement);
-
-            // Controls
             const controls = new THREE.OrbitControls(camera, renderer.domElement);
             controls.enableDamping = true;
             controls.dampingFactor = 0.05;
-            controls.minDistance = 3;
-            controls.maxDistance = 10;
             controls.autoRotate = true;
             controls.autoRotateSpeed = 0.5;
-
-            // Lighting
             const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
             scene.add(ambientLight);
-
             const directionalLight1 = new THREE.DirectionalLight(0x4488ff, 1);
             directionalLight1.position.set(5, 3, 5);
             scene.add(directionalLight1);
-
             const directionalLight2 = new THREE.DirectionalLight(0xff88aa, 0.8);
             directionalLight2.position.set(-5, -3, -5);
             scene.add(directionalLight2);
-
-            const pointLight = new THREE.PointLight(0xffaa44, 1, 100);
-            pointLight.position.set(0, 0, 0);
-            scene.add(pointLight);
-
-            // Create banded sphere geometry
             function createBandedEarth() {
                 const group = new THREE.Group();
                 const radius = 2;
-                const bands = 45;
-                const bandThickness = 0.035;
-                const bandGap = 0.12;
-
-                // Create parallel curved bands wrapping around the sphere
+                const bands = 40;
+                const baseGeometry = new THREE.TorusGeometry(radius, 0.035, 6, 64, Math.PI * 2 * 0.98);
                 for (let i = 0; i < bands; i++) {
-                    // Calculate latitude for each band (spacing them out)
-                    const lat = ((i / (bands - 1)) - 0.5) * Math.PI * 0.85; // Leave some space at poles
-                    const bandRadius = Math.cos(lat) * radius;
-                    
-                    if (Math.abs(bandRadius) < 0.15) continue; // Skip near poles
-                    
-                    // Create torus geometry that wraps around the sphere
-                    const tubeRadius = bandThickness;
-                    const radialSegments = 8;
-                    const tubularSegments = 128;
-                    const arc = Math.PI * 2 * 0.98; // Slightly less than full circle for gap effect
-                    
-                    const bandGeometry = new THREE.TorusGeometry(
-                        bandRadius,
-                        tubeRadius,
-                        radialSegments,
-                        tubularSegments,
-                        arc
-                    );
-                    
-                    // Create material with gradient color
+                    const lat = ((i / (bands - 1)) - 0.5) * Math.PI * 0.85;
+                    const scale = Math.cos(lat);
+                    if (Math.abs(scale) < 0.15) continue; 
                     const t = i / (bands - 1);
                     const color = new THREE.Color();
-                    if (t < 0.35) {
-                        // Dark blue to medium blue
-                        color.lerpColors(
-                            new THREE.Color(0x1a3a6a),
-                            new THREE.Color(0x2a5a9a),
-                            t / 0.35
-                        );
-                    } else if (t < 0.65) {
-                        // Medium blue to light blue
-                        color.lerpColors(
-                            new THREE.Color(0x2a5a9a),
-                            new THREE.Color(0x4488ff),
-                            (t - 0.35) / 0.3
-                        );
-                    } else {
-                        // Light blue to pink
-                        color.lerpColors(
-                            new THREE.Color(0x4488ff),
-                            new THREE.Color(0xff88aa),
-                            (t - 0.65) / 0.35
-                        );
-                    }
-
+                    if (t < 0.35) color.lerpColors(new THREE.Color(0x1a3a6a), new THREE.Color(0x2a5a9a), t / 0.35);
+                    else if (t < 0.65) color.lerpColors(new THREE.Color(0x2a5a9a), new THREE.Color(0x4488ff), (t - 0.35) / 0.3);
+                    else color.lerpColors(new THREE.Color(0x4488ff), new THREE.Color(0xff88aa), (t - 0.65) / 0.35);
                     const bandMaterial = new THREE.MeshPhongMaterial({
-                        color: color,
-                        emissive: color,
-                        emissiveIntensity: 0.35,
-                        shininess: 130,
-                        transparent: true,
-                        opacity: 0.88,
-                        side: THREE.DoubleSide
+                        color: color, emissive: color, emissiveIntensity: 0.35, shininess: 100, transparent: true, opacity: 0.88, side: THREE.DoubleSide
                     });
-
-                    const band = new THREE.Mesh(bandGeometry, bandMaterial);
-                    // Position and orient the band
+                    const band = new THREE.Mesh(baseGeometry, bandMaterial);
+                    band.scale.set(scale, scale, 1); 
                     band.rotation.x = Math.PI / 2;
-                    band.rotation.z = (i % 2) * Math.PI / bands; // Slight rotation for visual interest
+                    band.rotation.z = (i % 2) * Math.PI / bands;
                     band.position.y = Math.sin(lat) * radius;
                     group.add(band);
                 }
-
                 return group;
             }
-
-            // Create glowing core
             function createGlowingCore() {
                 const coreGroup = new THREE.Group();
-                const radius = 1.9;
-
-                // Main sphere for core
-                const coreGeometry = new THREE.SphereGeometry(radius, 64, 64);
+                const coreGeometry = new THREE.SphereGeometry(1.9, 32, 32); 
                 const coreMaterial = new THREE.ShaderMaterial({
-                    uniforms: {
-                        time: { value: 0 }
-                    },
-                    vertexShader: `
-                        varying vec3 vPosition;
-                        varying vec3 vNormal;
-                        
-                        void main() {
-                            vPosition = position;
-                            vNormal = normal;
-                            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-                        }
-                    `,
-                    fragmentShader: `
-                        uniform float time;
-                        varying vec3 vPosition;
-                        varying vec3 vNormal;
-                        
-                        // Hash function for pseudo-random
-                        float hash(float n) {
-                            return fract(sin(n) * 43758.5453);
-                        }
-                        
-                        void main() {
-                            vec3 pos = normalize(vPosition);
-                            
-                            // Create multiple glowing light clusters
-                            float pattern = 0.0;
-                            vec3 lightColor = vec3(0.0);
-                            
-                            // Generate random light positions
-                            for (int i = 0; i < 30; i++) {
-                                float idx = float(i);
-                                float seed1 = hash(idx * 7.23);
-                                float seed2 = hash(idx * 13.47);
-                                float seed3 = hash(idx * 19.89);
-                                
-                                // Spherical distribution
-                                float theta = seed1 * 6.28318;
-                                float phi = acos(2.0 * seed2 - 1.0);
-                                
-                                vec3 lightPos = vec3(
-                                    sin(phi) * cos(theta),
-                                    sin(phi) * sin(theta),
-                                    cos(phi)
-                                );
-                                
-                                // Animate lights
-                                lightPos = normalize(lightPos + vec3(sin(time * 0.05 + seed3), cos(time * 0.07 + seed3), sin(time * 0.06 + seed3)) * 0.2);
-                                
-                                float dist = distance(pos, lightPos);
-                                float intensity = smoothstep(0.4, 0.0, dist) * seed3;
-                                pattern += intensity;
-                                
-                                // Color variation
-                                vec3 glow = vec3(1.0, 0.5 + seed1 * 0.5, 0.1 + seed2 * 0.3);
-                                lightColor += glow * intensity * 0.8;
-                            }
-                            
-                            // Dark base color
-                            vec3 darkColor = vec3(0.02, 0.02, 0.08);
-                            
-                            // Green/teal areas
-                            float greenNoise = sin(vPosition.x * 4.0 + time * 0.3) * 
-                                             sin(vPosition.y * 4.0 + time * 0.4) * 
-                                             sin(vPosition.z * 3.0 + time * 0.2);
-                            vec3 greenColor = vec3(0.15, 0.5, 0.4);
-                            
-                            // Mix colors
-                            vec3 finalColor = mix(darkColor, lightColor, pattern * 0.6);
-                            
-                            // Add green hints
-                            float greenMix = max(0.0, greenNoise - 0.2);
-                            finalColor = mix(finalColor, greenColor, 0.25 * greenMix);
-                            
-                            // Add some ambient glow
-                            finalColor += darkColor * 0.3;
-                            
-                            gl_FragColor = vec4(finalColor, 0.75);
-                        }
-                    `,
-                    transparent: true,
-                    side: THREE.DoubleSide
+                    uniforms: { time: { value: 0 } },
+                    vertexShader: `varying vec3 vPosition; void main() { vPosition = position; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
+                    fragmentShader: `uniform float time; varying vec3 vPosition; float hash(float n) { return fract(sin(n) * 43758.5453); } void main() { vec3 pos = normalize(vPosition); float pattern = 0.0; vec3 lightColor = vec3(0.0); for (int i = 0; i < 10; i++) { float idx = float(i); float seed1 = hash(idx * 7.23); float seed2 = hash(idx * 13.47); float theta = seed1 * 6.28318; float phi = acos(2.0 * seed2 - 1.0); vec3 lightPos = vec3(sin(phi)*cos(theta), sin(phi)*sin(theta), cos(phi)); lightPos = normalize(lightPos + vec3(sin(time*0.05), cos(time*0.07), sin(time*0.06))*0.2); float dist = distance(pos, lightPos); float intensity = smoothstep(0.4, 0.0, dist); pattern += intensity; vec3 glow = vec3(1.0, 0.5 + seed1 * 0.5, 0.1 + seed2 * 0.3); lightColor += glow * intensity * 0.8; } vec3 darkColor = vec3(0.02, 0.02, 0.08); vec3 finalColor = mix(darkColor, lightColor, pattern * 0.6); gl_FragColor = vec4(finalColor, 0.75); }`,
+                    transparent: true, side: THREE.DoubleSide
                 });
-
                 const core = new THREE.Mesh(coreGeometry, coreMaterial);
                 coreGroup.add(core);
-
-                // Add glowing particles for extra sparkle
                 const particleGeometry = new THREE.BufferGeometry();
-                const particleCount = 600;
+                const particleCount = 300; 
                 const positions = new Float32Array(particleCount * 3);
                 const colors = new Float32Array(particleCount * 3);
-
                 for (let i = 0; i < particleCount; i++) {
                     const theta = Math.random() * Math.PI * 2;
                     const phi = Math.acos(Math.random() * 2 - 1);
-                    const r = radius + (Math.random() - 0.5) * 0.15;
-
+                    const r = 1.9 + (Math.random() - 0.5) * 0.15;
                     positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
                     positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
                     positions[i * 3 + 2] = r * Math.cos(phi);
-
-                    // Color variation (golden to orange to teal)
-                    const colorChoice = Math.random();
-                    if (colorChoice < 0.7) {
-                        // Golden
-                        colors[i * 3] = 1.0;
-                        colors[i * 3 + 1] = 0.6 + Math.random() * 0.3;
-                        colors[i * 3 + 2] = 0.1 + Math.random() * 0.2;
-                    } else if (colorChoice < 0.9) {
-                        // Orange
-                        colors[i * 3] = 1.0;
-                        colors[i * 3 + 1] = 0.4 + Math.random() * 0.3;
-                        colors[i * 3 + 2] = 0.0;
-                    } else {
-                        // Teal/green
-                        colors[i * 3] = 0.2;
-                        colors[i * 3 + 1] = 0.6 + Math.random() * 0.3;
-                        colors[i * 3 + 2] = 0.5 + Math.random() * 0.3;
-                    }
+                    colors[i * 3] = 1.0;
+                    colors[i * 3 + 1] = 0.6 + Math.random() * 0.3;
+                    colors[i * 3 + 2] = 0.1;
                 }
-
                 particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
                 particleGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-                const particleMaterial = new THREE.PointsMaterial({
-                    vertexColors: true,
-                    size: 0.08,
-                    sizeAttenuation: true,
-                    transparent: true,
-                    opacity: 0.85,
-                    blending: THREE.AdditiveBlending
-                });
-
+                const particleMaterial = new THREE.PointsMaterial({ vertexColors: true, size: 0.08, transparent: true, opacity: 0.85, blending: THREE.AdditiveBlending });
                 const particles = new THREE.Points(particleGeometry, particleMaterial);
                 coreGroup.add(particles);
-
                 return coreGroup;
             }
-
-            // Create the Earth
             const earthGroup = new THREE.Group();
-            const bandedEarth = createBandedEarth();
-            const glowingCore = createGlowingCore();
-
-            earthGroup.add(glowingCore);
-            earthGroup.add(bandedEarth);
+            earthGroup.add(createGlowingCore());
+            earthGroup.add(createBandedEarth());
             scene.add(earthGroup);
-
-            // Animation loop
             let time = 0;
             function animate() {
                 requestAnimationFrame(animate);
                 time += 0.01;
-
-                // Update shader time
-                if (glowingCore.children[0].material.uniforms) {
-                    glowingCore.children[0].material.uniforms.time.value = time;
+                if (earthGroup.children[0].children[0].material.uniforms) {
+                    earthGroup.children[0].children[0].material.uniforms.time.value = time;
                 }
-
-                // Rotate Earth (smooth continuous rotation)
                 earthGroup.rotation.y += 0.004;
-                
-                // Animate particles slightly
-                if (glowingCore.children[1] && glowingCore.children[1].rotation) {
-                    glowingCore.children[1].rotation.y += 0.001;
-                    glowingCore.children[1].rotation.x += 0.0005;
-                }
-
-                // Update controls
                 controls.update();
-
                 renderer.render(scene, camera);
             }
-
-            // Handle window resize
             window.addEventListener('resize', () => {
                 camera.aspect = container.clientWidth / container.clientHeight;
                 camera.updateProjectionMatrix();
                 renderer.setSize(container.clientWidth, container.clientHeight);
             });
-
-            // Start animation
             animate();
         }
 
-        // Your existing navigation and other JavaScript code...
+        // Navigation Interaction
         const navItems = document.querySelectorAll('.nav-item');
-        
         navItems.forEach(item => {
             item.addEventListener('click', function(e) {
                 e.preventDefault();
-                
                 navItems.forEach(nav => nav.classList.remove('active'));
                 this.classList.add('active');
-                
                 const sectionId = this.getAttribute('data-section');
                 const section = document.getElementById(sectionId);
-                if (section) {
-                    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+                if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
 
-        // Rest of your existing JavaScript code...
+        // Contact Form
         const contactForm = document.getElementById('contactForm');
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
-            
-            if (!name || !email || !message) {
-                alert('Please fill in all fields');
-                return;
-            }
-            
+            if (!name || !email || !message) { alert('Please fill in all fields'); return; }
             alert(`Thank you for your message, ${name}! I will get back to you soon.`);
             this.reset();
         });
 
-        // Work section functionality
+        // Projects Data
         const projects = [
             {
                 title: "MedManage - Pharmacy Management System",
                 description: "MedManage is a comprehensive pharmacy management platform designed to modernize medical retail operations. It features secure inventory control, real-time sales tracking, automated invoice generation, and business analytics—all within an intuitive interface.",
-                features: [
-                    "Secure Authentication Role-based access control with persistent session management for authorized personnel only.",
-                    "📦 Smart Inventory Tracking Real-time stock monitoring. ",
-                    "📄 Automated PDF Invoicing One-click professional bill generation with instant download and save options."
-                ],
+                features: ["Secure Authentication Role-based access control.", "📦 Smart Inventory Tracking Real-time stock monitoring.", "📄 Automated PDF Invoicing One-click bill generation."],
                 tech: ["Node.js","Express", "HTML", "CSS", "JavaScript", "Tailwind CSS", "MongoDB"],
                 link: "https://med-manage-online.vercel.app/login.html"
             },
             {
                 title: "SecureVault- Password Manager",
-                description: "A client-side password manager with AES encryption that runs entirely in your browser. Store, organize, and generate strong passwords with category-based filtering and auto-logout protection. All data stays local in localStorage—no servers, no tracking.",
-                features: [
-                    "🔐 AES Encryption Secure local storage with master key authentication and SHA256 hashing.",
-                    "🏷️ Smart Filtering Organize passwords by categories and tags for instant access.",
-                    "🔑 Strong Generation  Create 8-32 character passwords with real-time strength analysis."
-                ],
+                description: "A client-side password manager with AES encryption that runs entirely in your browser. Store, organize, and generate strong passwords with category-based filtering and auto-logout protection. All data stays local in localStorage.",
+                features: ["🔐 AES Encryption Secure local storage.", "🏷️ Smart Filtering Organize passwords by categories.", "🔑 Strong Generation Create 8-32 character passwords."],
                 tech: ["HTML5", "JavaScript (ES6+)", "Tailwind CSS", "CryptoJS", "MongoDB"],
                 link: "https://secure-vault-eta-flame.vercel.app"
             },
             {
                 title: "FileCraft - Universal File Converter",
-                description: "A browser-based file conversion tool that handles document, image, and media transformations entirely client-side. Convert between formats, adjust resolutions, and process media files without uploading to external servers. Built with FFmpeg.wasm for video processing and PDF-lib for document manipulation, ensuring privacy and speed.",
-                features: [
-                    "🖼️ Image Processing",
-                    "🎬 Media Conversion ",
-                    "📄 PDF Tools (In Progress) "
-                ],
+                description: "A browser-based file conversion tool that handles document, image, and media transformations entirely client-side. Convert between formats, adjust resolutions, and process media files without uploading to external servers.",
+                features: ["🖼️ Image Processing", "🎬 Media Conversion", "📄 PDF Tools (In Progress)"],
                 tech: ["HTML5", "CSS3", "JavaScript", "PDF-lib", "CloudConvert API", "FFmpeg.wasm"],
                 link: "https://filecraft-mu.vercel.app"
             },
             {
-                title: "Sampoorna - Complete Care, Connected Giving",
-                description: "A next-generation humanitarian platform connecting donors, NGOs, and communities through intelligent resource matching and real-time impact tracking. Sampoorna transforms charitable giving with QR-based verification, blockchain-inspired transparency, and AI-powered allocation—ensuring every donation reaches those who need it most while eliminating food waste and inefficiency.",
-                features: [
-                    "🔐 Verified Donation System ",
-                    "📊 Real-Time Impact Analytics",
-                    "🚨 Emergency Response Network"
-                ],
-                tech: ["HTML5", "CSS3", "JavaScript", "Node.js ", "Express.js", "MongoDB", "JWT"],
+                title: "Sampoorna - Complete Care",
+                description: "A next-generation humanitarian platform connecting donors, NGOs, and communities through intelligent resource matching and real-time impact tracking.",
+                features: ["🔐 Verified Donation System", "📊 Real-Time Impact Analytics", "🚨 Emergency Response Network"],
+                tech: ["HTML5", "CSS3", "JavaScript", "Node.js", "Express.js", "MongoDB", "JWT"],
                 link: "https://global-aid-network-frontend.vercel.app"
             }
         ];
@@ -1889,73 +967,61 @@
         const techStack = document.getElementById('techStack');
         const projectLink = document.getElementById('projectLink');
 
-        // Make images clickable
         document.querySelectorAll('.project-image').forEach((img, index) => {
-            img.addEventListener('click', () => {
-                window.open(projects[index].link, '_blank');
-            });
+            img.addEventListener('click', () => window.open(projects[index].link, '_blank'));
         });
 
-        // Update project details
         function updateProjectDetails(index) {
             const project = projects[index];
-            
             projectDetails.classList.add('fade-out');
-            
             setTimeout(() => {
                 projectTitle.textContent = project.title;
                 projectDescription.textContent = project.description;
-                
                 projectFeatures.innerHTML = '';
-                project.features.forEach(feature => {
-                    const li = document.createElement('li');
-                    li.textContent = feature;
-                    projectFeatures.appendChild(li);
-                });
-                
+                project.features.forEach(feature => { const li = document.createElement('li'); li.textContent = feature; projectFeatures.appendChild(li); });
                 techStack.innerHTML = '';
-                project.tech.forEach(tech => {
-                    const tag = document.createElement('span');
-                    tag.className = 'tech-tag';
-                    tag.textContent = tech;
-                    techStack.appendChild(tag);
-                });
-                
+                project.tech.forEach(tech => { const tag = document.createElement('span'); tag.className = 'tech-tag'; tag.textContent = tech; techStack.appendChild(tag); });
                 projectLink.href = project.link;
-                
                 projectDetails.classList.remove('fade-out');
                 projectDetails.classList.add('fade-in');
             }, 250);
         }
 
-        // Intersection Observer for work section
-        const workObserverOptions = {
-            root: null,
-            rootMargin: '-40% 0px -40% 0px',
-            threshold: 0
-        };
-
         const workObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const projectIndex = parseInt(entry.target.getAttribute('data-project'));
-                    
                     projectItems.forEach(item => item.classList.remove('active'));
                     entry.target.classList.add('active');
-                    
                     updateProjectDetails(projectIndex);
                 }
             });
-        }, workObserverOptions);
+        }, { rootMargin: '-40% 0px -40% 0px', threshold: 0 });
 
-        projectItems.forEach(item => {
-            workObserver.observe(item);
-        });
+        projectItems.forEach(item => workObserver.observe(item));
+        if (projectItems.length > 0) { projectItems[0].classList.add('active'); updateProjectDetails(0); }
 
-        if (projectItems.length > 0) {
-            projectItems[0].classList.add('active');
-            updateProjectDetails(0);
+        // --- THEME TOGGLE LOGIC ---
+        const toggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Check for saved user preference on load
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            body.classList.add('dark-mode');
+            toggle.classList.add('active');
         }
+
+        toggle.addEventListener('click', () => {
+            toggle.classList.toggle('active');
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+        });
     </script>
 </body>
 </html>
