@@ -1,0 +1,110 @@
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 4px solid #000;
+}
+
+.left {
+  padding: 4rem 3rem;
+  border-right: 4px solid #000;
+  background: var(--violet);
+}
+
+.title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 900;
+  line-height: .95;
+  letter-spacing: -2px;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.text {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.funFact {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  border: 3px solid #000;
+  background: #fff;
+  padding: 10px 14px;
+  box-shadow: 4px 4px 0 #000;
+  font-weight: 700;
+  font-size: .85rem;
+  margin-top: 1rem;
+  transform: rotate(-.5deg);
+}
+.funFactLabel {
+  background: #000;
+  color: var(--yellow);
+  padding: 2px 8px;
+  font-weight: 900;
+  font-size: .65rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  flex-shrink: 0;
+}
+
+.right {
+  padding: 4rem 3rem;
+  background: var(--cream);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.statCard {
+  border: 4px solid #000;
+  padding: 1.2rem 1.5rem;
+  background: #fff;
+  box-shadow: 6px 6px 0 #000;
+  transition: all .2s;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+.statCard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.5), transparent);
+  transform: skewX(-20deg);
+  transition: left .5s;
+}
+.statCard:hover::before { left: 150%; }
+.statCard:hover {
+  transform: translateY(-6px) rotate(-1deg);
+  box-shadow: 12px 12px 0 #000;
+  background: var(--yellow);
+}
+.statCard:hover .statNum { color: #000 !important; }
+
+.statNum {
+  font-size: 2.6rem;
+  font-weight: 900;
+  letter-spacing: -2px;
+  line-height: 1;
+  transition: color .2s;
+  font-variant-numeric: tabular-nums;
+}
+.statLabel {
+  font-size: .8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  margin-top: .3rem;
+}
+
+@media (max-width: 768px) {
+  .about { grid-template-columns: 1fr; }
+  .left { border-right: none; border-bottom: 4px solid #000; padding: 3rem 1.5rem; }
+  .right { padding: 3rem 1.5rem; }
+}

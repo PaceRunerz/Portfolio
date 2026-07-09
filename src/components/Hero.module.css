@@ -1,0 +1,218 @@
+.hero {
+  min-height: 92vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 4px solid #000;
+  overflow: hidden;
+}
+
+/* ── LEFT ── */
+.left {
+  padding: 5rem 3rem 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 4px solid #000;
+  background: var(--cream);
+  animation: slideUp .7s ease both;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--accent);
+  border: 3px solid #000;
+  padding: 6px 16px;
+  font-weight: 900;
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  box-shadow: 4px 4px 0 #000;
+  transform: rotate(-1.5deg);
+  margin-bottom: 2rem;
+  width: fit-content;
+  animation: badgeBounce 2.5s ease-in-out infinite, pulseRing 3s ease-in-out infinite;
+}
+
+.name {
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 900;
+  line-height: .9;
+  letter-spacing: -3px;
+  text-transform: uppercase;
+  margin-bottom: .5rem;
+}
+.stroke {
+  -webkit-text-stroke: 3px #000;
+  color: transparent;
+}
+
+.role {
+  background: var(--yellow);
+  border: 3px solid #000;
+  padding: 8px 20px;
+  font-weight: 900;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  box-shadow: 5px 5px 0 #000;
+  transform: rotate(.8deg);
+  display: inline-block;
+  margin: 1.5rem 0 2rem;
+  min-width: 280px;
+  min-height: 44px;
+}
+.cursor { animation: blink .8s step-end infinite; margin-left: 2px; }
+
+.desc {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.6;
+  max-width: 420px;
+  border-left: 4px solid var(--accent);
+  padding-left: 1.2rem;
+}
+
+.btns {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.quickSocials {
+  display: flex;
+  gap: .7rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+.socialChip {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  border: 2px solid #000;
+  padding: 5px 12px;
+  font-weight: 700;
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  text-decoration: none;
+  color: #000;
+  background: #fff;
+  box-shadow: 3px 3px 0 #000;
+  transition: all .1s;
+}
+.socialChip:hover { background: var(--yellow); transform: translate(-2px,-2px); box-shadow: 5px 5px 0 #000; }
+.socialChip:active { transform: translate(1px,1px); box-shadow: none; }
+
+/* ── RIGHT ── */
+.right {
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.glitchCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%; height: 100%;
+  display: block;
+  opacity: .55;
+}
+
+.vignOuter {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle, rgba(0,0,0,0) 60%, rgba(0,0,0,.95) 100%);
+}
+.vignCenter {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle, rgba(0,0,0,.75) 0%, rgba(0,0,0,0) 65%);
+}
+
+.star {
+  position: absolute;
+  z-index: 1;
+  animation: spinStar 10s linear infinite;
+  opacity: .5;
+  user-select: none;
+}
+
+.rightContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+}
+
+.bigNumber {
+  font-size: clamp(8rem, 15vw, 13rem);
+  font-weight: 900;
+  -webkit-text-stroke: 2px var(--yellow);
+  color: transparent;
+  line-height: 1;
+  letter-spacing: -8px;
+  display: block;
+  animation: numFloat 4s ease-in-out infinite, glowPulse 4s ease-in-out infinite;
+}
+
+.floatingCard {
+  background: var(--yellow);
+  border: 4px solid #000;
+  padding: 1rem 1.5rem;
+  box-shadow: 8px 8px 0 #fff;
+  transform: rotate(-2deg);
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  animation: cardWiggle 6s ease-in-out infinite;
+}
+.floatingCard span {
+  font-weight: 900;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: #000;
+}
+
+.badgeRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+}
+
+.dotBadge {
+  background: var(--accent);
+  border: 3px solid #fff;
+  padding: 8px 16px;
+  font-weight: 900;
+  font-size: .8rem;
+  text-transform: uppercase;
+  color: #000;
+  box-shadow: 4px 4px 0 #fff;
+  display: inline-block;
+  margin-top: 1rem;
+  animation: badgePop 3s ease-in-out infinite;
+}
+
+.sticker {
+  background: var(--violet);
+  border: 3px solid #fff;
+  padding: 6px 12px;
+  font-weight: 900;
+  font-size: .75rem;
+  text-transform: uppercase;
+  color: #000;
+  box-shadow: 3px 3px 0 #fff;
+  transform: rotate(-3deg);
+  display: inline-block;
+  margin-top: .8rem;
+  margin-left: 1rem;
+}
+
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; }
+  .left { border-right: none; border-bottom: 4px solid #000; padding: 3rem 1.5rem; }
+  .right { min-height: 280px; border-top: 4px solid #000; }
+}
