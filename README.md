@@ -1,4 +1,4 @@
-# Shreyansh Tripathi — Portfolio (React + Vite)
+# Shreyansh Tripathi — Portfolio (React 
 
 Neo-brutalist developer portfolio built with React 18 + Vite + CSS Modules.
 
